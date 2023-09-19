@@ -295,82 +295,100 @@
 
 	<!-- Generates the native headers from source files -->
 	<target name="headers" description="invokes javah on java classes" depends="compile">
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.native}/linux">
-			<class name="org.lwjgl.LinuxSysImplementation" />
-			<class name="org.lwjgl.opengl.LinuxEvent" />
-			<class name="org.lwjgl.opengl.LinuxMouse" />
-			<class name="org.lwjgl.opengl.LinuxKeyboard" />
-			<class name="org.lwjgl.opengl.LinuxDisplay" />
-			<class name="org.lwjgl.opengl.LinuxPeerInfo" />
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.native}/linux" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/LinuxSysImplementati/n.java" />
+			<include name="org/lwjgl/opengl/LinuxEvent.java" />
+			<include name="org/lwjgl/opengl/LinuxMouse.java" />
+			<include name="org/lwjgl/opengl/LinuxKeyboard.java" />
+			<include name="org/lwjgl/opengl/LinuxDisplay.java" />
+			<include name="org/lwjgl/opengl/LinuxPeerInfo.java" />
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.native}/linux/opengl">
-			<class name="org.lwjgl.opengl.LinuxPbufferPeerInfo"/>
-			<class name="org.lwjgl.opengl.LinuxDisplayPeerInfo"/>
-			<class name="org.lwjgl.opengl.LinuxAWTGLCanvasPeerInfo"/>
-			<class name="org.lwjgl.opengl.LinuxContextImplementation"/>
-			<class name="org.lwjgl.opengl.LinuxCanvasImplementation"/>
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.native}/linux/opengl" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/opengl/LinuxPbufferPeerInfo.java"/>
+			<include name="org/lwjgl/opengl/LinuxDisplayPeerInfo.java"/>
+			<include name="org/lwjgl/opengl/LinuxAWTGLCanvasPeerInfo.java"/>
+			<include name="org/lwjgl/opengl/LinuxContextImplementation.java"/>
+			<include name="org/lwjgl/opengl/LinuxCanvasImplementation.java"/>
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.native}/windows">
-			<class name="org.lwjgl.WindowsSysImplementation"/>
-			<class name="org.lwjgl.opengl.WindowsKeyboard" />
-			<class name="org.lwjgl.opengl.WindowsRegistry" />
-			<class name="org.lwjgl.opengl.WindowsDisplay"/>
-			<class name="org.lwjgl.opengl.WindowsDisplayPeerInfo"/>
-			<class name="org.lwjgl.opengl.WindowsAWTGLCanvasPeerInfo"/>
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.native}/windows" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/WindowsSysImplementati/n.java"/>
+			<include name="org/lwjgl/opengl/WindowsKeyboard.java" />
+			<include name="org/lwjgl/opengl/WindowsRegistry.java" />
+			<include name="org/lwjgl/opengl/WindowsDisplay.java"/>
+			<include name="org/lwjgl/opengl/WindowsDisplayPeerInfo.java"/>
+			<include name="org/lwjgl/opengl/WindowsAWTGLCanvasPeerInfo.java"/>
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.native}/windows/opengl">
-			<class name="org.lwjgl.opengl.WindowsPbufferPeerInfo"/>
-			<class name="org.lwjgl.opengl.WindowsPeerInfo"/>
-			<class name="org.lwjgl.opengl.WindowsContextImplementation"/>
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.native}/windows/opengl" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/opengl/WindowsPbufferPeerInfo.java"/>
+			<include name="org/lwjgl/opengl/WindowsPeerInfo.java"/>
+			<include name="org/lwjgl/opengl/WindowsContextImplementation.java"/>
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.native}/windows/opengles">
-			<class name="org.lwjgl.opengl.WindowsPeerInfo"/>
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.native}/windows/opengles" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/opengl/WindowsPeerInfo.java"/>
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.native}/macosx">
-			<class name="org.lwjgl.MacOSXSysImplementation" />
-			<class name="org.lwjgl.opengl.MacOSXCanvasPeerInfo" />
-			<class name="org.lwjgl.opengl.MacOSXPeerInfo" />
-			<class name="org.lwjgl.opengl.MacOSXPbufferPeerInfo" />
-			<class name="org.lwjgl.opengl.MacOSXDisplay" />
-			<class name="org.lwjgl.opengl.MacOSXContextImplementation" />
-			<class name="org.lwjgl.opengl.MacOSXNativeKeyboard" />
-			<class name="org.lwjgl.opengl.MacOSXNativeMouse" />
-			<class name="org.lwjgl.opengl.MacOSXMouseEventQueue" />
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.native}/macosx" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/MacOSXSysImplementati/n.java" />
+			<include name="org/lwjgl/opengl/MacOSXCanvasPeerInfo.java" />
+			<include name="org/lwjgl/opengl/MacOSXPeerInfo.java" />
+			<include name="org/lwjgl/opengl/MacOSXPbufferPeerInfo.java" />
+			<include name="org/lwjgl/opengl/MacOSXDisplay.java" />
+			<include name="org/lwjgl/opengl/MacOSXContextImplementation.java" />
+			<include name="org/lwjgl/opengl/MacOSXNativeKeyboard.java" />
+			<include name="org/lwjgl/opengl/MacOSXNativeMouse.java" />
+			<include name="org/lwjgl/opengl/MacOSXMouseEventQueue.java" />
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.headers}">
-			<class name="org.lwjgl.opengl.AWTSurfaceLock" />
-			<class name="org.lwjgl.DefaultSysImplementation" />
-			<class name="org.lwjgl.input.Cursor" />
-			<class name="org.lwjgl.input.Keyboard" />
-			<class name="org.lwjgl.input.Mouse" />
-			<class name="org.lwjgl.openal.AL" />
-			<class name="org.lwjgl.opencl.CL" />
-            <class name="org.lwjgl.opencl.CallbackUtil" />
-            <class name="org.lwjgl.BufferUtils" />
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.headers}" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/opengl/AWTSurfaceLock.java" />
+			<include name="org/lwjgl/DefaultSysImplementati/n.java" />
+			<include name="org/lwjgl/input/Cursor.java" />
+			<include name="org/lwjgl/input/Keyboard.java" />
+			<include name="org/lwjgl/input/Mouse.java" />
+			<include name="org/lwjgl/openal/AL.java" />
+			<include name="org/lwjgl/opencl/CL.java" />
+            <include name="org/lwjgl/opencl/CallbackUtil.java" />
+            <include name="org/lwjgl/BufferUti/s.java" />
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.headers}/opengl">
-			<class name="org.lwjgl.opengl.GLContext"/>
-			<class name="org.lwjgl.opengl.Pbuffer"/>
-			<class name="org.lwjgl.opengl.CallbackUtil"/>
-			<class name="org.lwjgl.opengl.NVPresentVideoUtil"/>
-			<class name="org.lwjgl.opengl.NVVideoCaptureUtil"/>
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.headers}/opengl" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/opengl/GLContext.java"/>
+			<include name="org/lwjgl/opengl/Pbuffer.java"/>
+			<include name="org/lwjgl/opengl/CallbackUtil.java"/>
+			<include name="org/lwjgl/opengl/NVPresentVideoUtil.java"/>
+			<include name="org/lwjgl/opengl/NVVideoCaptureUtil.java"/>
+		</javac>
 
-		<javah classpath="${lwjgl.bin}" destdir="${lwjgl.src.headers}/opengles">
-			<class name="org.lwjgl.opengles.EGL"/>
-			<class name="org.lwjgl.opengles.EGLKHRFenceSync"/>
-			<class name="org.lwjgl.opengles.EGLKHRReusableSync"/>
-			<class name="org.lwjgl.opengles.EGLNVSync"/>
-			<class name="org.lwjgl.opengles.GLContext"/>
-			<class name="org.lwjgl.opengles.CallbackUtil"/>
-		</javah>
+		<javac nativeHeaderDir="${lwjgl.src.headers}/opengles" debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+			<src path="${lwjgl.src}/java/"/>
+			<src path="${lwjgl.src}/generated/"/>
+			<include name="org/lwjgl/opengles/EGL.java"/>
+			<include name="org/lwjgl/opengles/EGLKHRFenceSync.java"/>
+			<include name="org/lwjgl/opengles/EGLKHRReusableSync.java"/>
+			<include name="org/lwjgl/opengles/EGLNVSync.java"/>
+			<include name="org/lwjgl/opengles/GLContext.java"/>
+			<include name="org/lwjgl/opengles/CallbackUtil.java"/>
+		</javac>
 	</target>
 
 	<target name="touch-version">
@@ -462,7 +480,7 @@
 
 	<!-- Compiles the Java source code -->
 	<target name="compile" description="Compiles the java source code" depends="-initialize">
-		<javac debug="yes" destdir="${lwjgl.bin}" source="1.5" target="1.5" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
+		<javac debug="yes" destdir="${lwjgl.bin}" source="8" target="8" classpath="${lwjgl.lib}/jinput.jar:${lwjgl.lib}/AppleJavaExtensions.jar:${lwjgl.lib}/asm-debug-all.jar" taskname="core">
             <!--<compilerarg value="-Xlint:unchecked"/>-->
 			<src path="${lwjgl.src}/java/"/>
 			<src path="${lwjgl.src}/generated/"/>
@@ -471,12 +489,12 @@
 			<include name="org/lwjgl/opengl/**"/>
 			<include name="org/lwjgl/opengles/**"/>
 			<include name="org/lwjgl/openal/**"/>
-            <include name="org/lwjgl/opencl/**"/>
+      <include name="org/lwjgl/opencl/**"/>
 			<include name="org/lwjgl/util/**"/>
 			<exclude name="org/lwjgl/util/generator/**"/>
 		</javac>
-		<javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" includes="org/lwjgl/test/**" source="1.5" target="1.5" taskname="test" />
-		<javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" includes="org/lwjgl/examples/**" source="1.5" target="1.5" taskname="examples" />
+		<javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" includes="org/lwjgl/test/**" source="8" target="8" taskname="test" />
+		<javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" includes="org/lwjgl/examples/**" source="8" target="8" taskname="examples" />
 	</target>
 
 	<target name="compile_native" depends="-initialize, headers, touch-version, version-mismatch" description="Compiles the native files">
@@ -671,7 +689,7 @@
 
 	<!-- Creates the Javadoc -->
 	<target name="javadoc" description="Creates javadoc from java source code">
-		<javadoc destdir="${lwjgl.docs}/javadoc" classpath="${lwjgl.lib}/jinput.jar" author="true" version="true" use="true" source="1.5" windowtitle="LWJGL API" useexternalfile="true">
+		<javadoc destdir="${lwjgl.docs}/javadoc" classpath="${lwjgl.lib}/jinput.jar" author="true" version="true" use="true" source="11" windowtitle="LWJGL API" useexternalfile="true">
 			<fileset refid="lwjgl.javadoc.fileset" />
 			<doctitle><![CDATA[<h1>Lightweight Java Game Toolkit</h1>]]></doctitle>
 			<bottom><![CDATA[<i>Copyright &#169; 2002-2009 lwjgl.org. All Rights Reserved.</i>]]></bottom>
