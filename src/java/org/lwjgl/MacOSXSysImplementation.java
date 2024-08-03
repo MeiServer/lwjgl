@@ -36,6 +36,7 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
 import java.lang.UnsatisfiedLinkError;
+import java.lang.annotation.Native;
 
 /**
  *
@@ -44,13 +45,14 @@ import java.lang.UnsatisfiedLinkError;
  * $Id$
  */
 final class MacOSXSysImplementation extends J2SESysImplementation {
+	@Native
 	private static final int JNI_VERSION = 25;
 
 	static {
 		// Manually start the AWT Application Loop
 		java.awt.Toolkit.getDefaultToolkit();
 	}
-	
+
 	public int getRequiredJNIVersion() {
 		return JNI_VERSION;
 	}
