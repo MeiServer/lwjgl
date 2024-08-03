@@ -36,6 +36,7 @@ import java.security.PrivilegedExceptionAction;
 import java.security.PrivilegedActionException;
 import java.security.AccessController;
 import java.lang.reflect.Method;
+import java.lang.annotation.Native;
 
 import org.lwjgl.opengl.Display;
 
@@ -46,6 +47,7 @@ import org.lwjgl.opengl.Display;
  * $Id$
  */
 final class WindowsSysImplementation extends DefaultSysImplementation {
+  @Native
 	private static final int JNI_VERSION = 24;
 
 	static {
