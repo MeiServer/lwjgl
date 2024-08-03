@@ -35,6 +35,7 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
 import java.lang.UnsatisfiedLinkError;
+import java.lang.annotation.Native;
 
 /**
  *
@@ -43,12 +44,13 @@ import java.lang.UnsatisfiedLinkError;
  * $Id$
  */
 final class LinuxSysImplementation extends J2SESysImplementation {
+  @Native
 	private static final int JNI_VERSION = 19;
 
 	static {
 		// Load libawt.so and libmawt.so, needed for libjawt.so
 		java.awt.Toolkit.getDefaultToolkit();
-		
+
 		// manually load libjawt.so into vm, needed since Java 7
 		AccessController.doPrivileged(new PrivilegedAction<Object>() {
 			public Object run() {

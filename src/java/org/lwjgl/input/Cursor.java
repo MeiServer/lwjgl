@@ -32,6 +32,7 @@
 package org.lwjgl.input;
 
 import java.nio.IntBuffer;
+import java.lang.annotation.Native;
 
 import org.lwjgl.BufferChecks;
 import org.lwjgl.BufferUtils;
@@ -51,12 +52,15 @@ import org.lwjgl.Sys;
 
 public class Cursor {
 	/** 1 bit transparency for native cursor */
+  @Native
 	public static final int		CURSOR_ONE_BIT_TRANSPARENCY	= 1;
 
 	/** 8 bit alhpa native cursor */
+  @Native
 	public static final int		CURSOR_8_BIT_ALPHA					= 2;
 
 	/** animation native cursor */
+  @Native
 	public static final int		CURSOR_ANIMATION						= 4;
 
 	/** First element to display */
@@ -173,10 +177,10 @@ public class Cursor {
 		CursorElement[] cursors;
 		switch (LWJGLUtil.getPlatform()) {
 			case LWJGLUtil.PLATFORM_MACOSX:
-				
+
 				// OS X requires the image format to be in ABGR format
 				convertARGBtoABGR(images_copy);
-				
+
 				// create our cursor elements
 				cursors = new CursorElement[numImages];
 				for(int i=0; i<numImages; i++) {
@@ -224,7 +228,7 @@ public class Cursor {
 		}
 		return cursors;
 	}
-	
+
 	/**
 	 * Convert an IntBuffer image of ARGB format into ABGR
 	 *
@@ -233,14 +237,14 @@ public class Cursor {
 	private static void convertARGBtoABGR(IntBuffer imageBuffer) {
 		for (int i = 0; i < imageBuffer.limit(); i++) {
 			int argbColor = imageBuffer.get(i);
-			
+
 			byte alpha = (byte)(argbColor >>> 24);
 	        byte blue = (byte)(argbColor >>> 16);
 	        byte green = (byte)(argbColor >>> 8);
 	        byte red = (byte)argbColor;
-	        
+
 	        int abgrColor = ((alpha & 0xff) << 24 ) + ((red & 0xff) << 16 ) + ((green & 0xff) << 8 ) + ((blue & 0xff) ); 
-	        
+
 	        imageBuffer.put(i, abgrColor);
 		}
 	}

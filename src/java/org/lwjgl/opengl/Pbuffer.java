@@ -32,6 +32,7 @@
 package org.lwjgl.opengl;
 
 import java.nio.IntBuffer;
+import java.lang.annotation.Native;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
@@ -52,6 +53,8 @@ public final class Pbuffer extends DrawableGL {
 	/**
 	 * Indicates that Pbuffers can be created.
 	 */
+
+  @Native
 	public static final int PBUFFER_SUPPORTED = 1 << 0;
 
 	/**

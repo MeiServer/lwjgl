@@ -40,6 +40,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.lang.annotation.Native;
 
 /**
  * Some often-used Buffer code for creating native buffers of the appropriate size.
